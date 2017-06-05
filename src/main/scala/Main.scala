@@ -16,6 +16,7 @@ object Main {
     println("Test data type=double: "+returnAnything(2.98))
     println("Test data type=int: "+returnAnything(10))
     println("Test data type=boolean: "+returnAnything(true))
+    
   }
 
   def outputString(inputString:String){
