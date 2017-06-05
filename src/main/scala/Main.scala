@@ -9,10 +9,15 @@ object Main {
     var output="Hello World"
     println("Printing from variable: "+output)
     outputString("Hello World")
+    println(returnString())
   }
 
   def outputString(inputString:String){
     println("Printing from method: "+inputString)
 
+  }
+
+  def returnString():String={
+    return "Hello World! returned from method"
   }
 }
