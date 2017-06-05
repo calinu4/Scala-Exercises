@@ -27,5 +27,23 @@ object BasicWorksheet {
 
   }
 
+  def returnSubstring(word: String, size: Int): String = {
+    val wordsize = word.size
+    var result = ""
+    for (i <- wordsize - size to wordsize - 1) {
+      result += word.charAt(i)
+    }
+    return result
+  }
 
+  println(returnSubstring("Hello", 3))
+
+  def returnString2(word1: String, word2: String, c1: Char, c2: Char): String = {
+    var result = word1.concat(word2)
+
+    result=result.replace(c1,c2)
+    return result
+
+  }
+  println("Result of string replace: "+returnString2("Ha","llo",'a','e'))
 }
