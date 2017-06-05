@@ -118,19 +118,42 @@ object BasicWorksheet {
 
   printOutStringsRecursion("Hi", 5)
 
-  def printOutStringSquaredRecursion(word: String, times: Int): Unit = {
+  def printOutStringSquaredRecursion(word: String, times: Int,iteration:Int,counter:Int): Unit = {
+    print(word+" ")
+    if(counter>=times&& iteration>=1){
+      println()
+      printOutStringSquaredRecursion(word, times,iteration-1,1)
+    }
+    else
+    if(iteration>=1)
+      printOutStringSquaredRecursion(word,times,iteration,counter+1)
 
-    var result = ""
-    for (i <- 1 to times)
-      result += word + " "
-    println(result+" ")
 
 
-    if (times >= 1)
-      printOutStringSquaredRecursion(word, times-1)
+
 
 
   }
 
-  printOutStringSquaredRecursion("H", 4)
+  printOutStringSquaredRecursion("H", 4,4,1)
+
+  def fizzBuzzRecursion(word1: String, word2: String, size: Int,currentPos:Int): Unit = {
+    if (size >= 1) {
+      if (currentPos % 3 == 0 && currentPos % 5 == 0)
+        print(word1 + word2 + ",")
+      else {
+        if (currentPos % 3 == 0)
+          print(word1 + ",")
+        else if (currentPos % 5 == 0)
+          print(word2 + ",")
+        else
+          print(currentPos + ",")
+      }
+      fizzBuzzRecursion(word1, word2, size - 1,currentPos+1)
+    }
+  }
+  fizzBuzzRecursion("fizz","buzz",15,1)
+
+//Pattern matching exercises
+
 }
