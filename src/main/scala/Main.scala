@@ -7,6 +7,12 @@ object Main {
     println("Hello World")
 
     var output="Hello World"
-    println(output)
+    println("Printing from variable: "+output)
+    outputString("Hello World")
+  }
+
+  def outputString(inputString:String){
+    println("Printing from method: "+inputString)
+
   }
 }
