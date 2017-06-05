@@ -113,31 +113,24 @@ object BasicWorksheet {
   def printOutStringsRecursion(word: String, times: Int): Unit = {
     println(word)
     if (times > 1)
-      printOutStrings(word, times)
+      printOutStrings(word, times - 1)
   }
 
   printOutStringsRecursion("Hi", 5)
 
-  def printOutStringSquaredRecursion(word: String, times: Int,iteration:Int,counter:Int): Unit = {
-    print(word+" ")
-    if(counter>=times&& iteration>=1){
+  def printOutStringSquaredRecursion(word: String, times: Int, iteration: Int, counter: Int): Unit = {
+    print(word + " ")
+    if (counter >= times && iteration >= 1) {
       println()
-      printOutStringSquaredRecursion(word, times,iteration-1,1)
+      printOutStringSquaredRecursion(word, times, iteration - 1, 1)
     }
-    else
-    if(iteration>=1)
-      printOutStringSquaredRecursion(word,times,iteration,counter+1)
-
-
-
-
-
-
+    else if (iteration >= 1)
+      printOutStringSquaredRecursion(word, times, iteration, counter + 1)
   }
 
-  printOutStringSquaredRecursion("H", 4,4,1)
+  printOutStringSquaredRecursion("H", 4, 4, 1)
 
-  def fizzBuzzRecursion(word1: String, word2: String, size: Int,currentPos:Int): Unit = {
+  def fizzBuzzRecursion(word1: String, word2: String, size: Int, currentPos: Int): Unit = {
     if (size >= 1) {
       if (currentPos % 3 == 0 && currentPos % 5 == 0)
         print(word1 + word2 + ",")
@@ -149,11 +142,25 @@ object BasicWorksheet {
         else
           print(currentPos + ",")
       }
-      fizzBuzzRecursion(word1, word2, size - 1,currentPos+1)
+      fizzBuzzRecursion(word1, word2, size - 1, currentPos + 1)
     }
   }
-  fizzBuzzRecursion("fizz","buzz",15,1)
 
-//Pattern matching exercises
+  fizzBuzzRecursion("fizz", "buzz", 15, 1)
+
+  //Pattern matching 1 exercises
+  def returnPattern1(num1: Int, num2: Int, isTrue: Boolean): Any = isTrue match {
+    case true => num1 + num2
+    case false => num1 * num2
+  }
+  println("Pattern matching 1 first condition: "+returnPattern1(7,8,true))
+
+  def returnPattern1Condition2(any: Any): Any =any match {
+    case  (0,0)=>0
+    case  (0,y) =>y
+    case (x,0)=>x
+  }
+  println("Return pattern 1 tupple: "+returnPattern1Condition2(4,0))
+//Pattern matching 2 exercises
 
 }
