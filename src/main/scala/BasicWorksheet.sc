@@ -163,4 +163,10 @@ object BasicWorksheet {
   println("Return pattern 1 tupple: "+returnPattern1Condition2(4,0))
 //Pattern matching 2 exercises
 
+  def f(a: Array[Int]) = a match {
+      case Array(x, y, z @ _*) => Array(y, x) ++ z
+      case _ => a
+    }
+  var numbers=Array(5,9)
+  f(numbers)
 }
