@@ -45,5 +45,5 @@ object BasicWorksheet {
     return result
 
   }
-  println("Result of string replace1: "+returnString2("Ha","llo",'a','e'))
+  println("Result of string replace: "+returnString2("Ha","llo",'a','e'))
 }
