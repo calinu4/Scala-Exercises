@@ -74,10 +74,63 @@ object BasicWorksheet {
 
   println("Second conditional: " + returnCondition2(4, 6))
 
-  def printOutStrings(word:String,times:Int):Unit={
-  for(i<-1 to times)
-    println(word)
+  def printOutStrings(word: String, times: Int): Unit = {
+    for (i <- 1 to times)
+      println(word)
 
   }
-  printOutStrings("Ha",3)
+
+  printOutStrings("Hi", 3)
+
+  def printOutStringSquared(word: String, times: Int): Unit = {
+    var result = ""
+    for (i <- 1 to times)
+      result += word + " "
+
+    for (j <- 1 to times)
+      println(result)
+  }
+
+  printOutStringSquared("H", 4)
+
+  def fizzBuzz(word1: String, word2: String, size: Int): Unit = {
+    for (i <- 1 to size)
+      if (i % 3 == 0 && i % 5 == 0)
+        print(word1 + word2 + ",")
+      else {
+        if (i % 3 == 0)
+          print(word1 + ",")
+        else if (i % 5 == 0)
+          print(word2 + ",")
+        else
+          print(i + ",")
+      }
+  }
+
+  fizzBuzz("Fizz", "Buzz", 15)
+
+  //rewritte iterations using recursion here
+  def printOutStringsRecursion(word: String, times: Int): Unit = {
+    println(word)
+    if (times > 1)
+      printOutStrings(word, times)
+  }
+
+  printOutStringsRecursion("Hi", 5)
+
+  def printOutStringSquaredRecursion(word: String, times: Int): Unit = {
+
+    var result = ""
+    for (i <- 1 to times)
+      result += word + " "
+    println(result+" ")
+
+
+    if (times >= 1)
+      printOutStringSquaredRecursion(word, times-1)
+
+
+  }
+
+  printOutStringSquaredRecursion("H", 4)
 }
