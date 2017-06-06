@@ -181,9 +181,9 @@ object BasicWorksheet {
 
   def functionTimes():Unit={
     //var times:Array[Array[String]]=
-    var times: Iterator[Array[Array[String]]] =java.util.TimeZone.getAvailableIDs().map(a=>a.split('/')).filter(_.size>0).map(b=>b).grouped(10)
+    var times:Array[String]=java.util.TimeZone.getAvailableIDs().map(a=>a.split('/')).filter(_.length>1).map(b=>b(1)).grouped(50).map(c=>c(0)).toArray
 
-   // times.foreach(println)
+   times.foreach(println)
   }
   functionTimes()
 
