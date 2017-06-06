@@ -161,12 +161,31 @@ object BasicWorksheet {
     case (x,0)=>x
   }
   println("Return pattern 1 tupple: "+returnPattern1Condition2(4,0))
-//Pattern matching 2 exercises
+//Pattern matching 2 exercises swapping numbers
 
-  def f(a: Array[Int]) = a match {
-      case Array(x, y, z @ _*) => Array(y, x) ++ z
-      case _ => a
-    }
-  var numbers=Array(5,9)
-  f(numbers)
+
+
+  def switchNumbers1(any:Any) = any match {
+    case Array(x, y,z @ _*) => Array(y, x)
+    case List(x,y,z @ _*)=>List(y,x)
+    case tuple @ (a: Any, b: Any)=>tuple.swap
+    case _ => any
+  }
+
+  var numbers1=Array(5,9,11,12)
+  var numbers2=List(4,8,45)
+  val tupple=(3,6)
+  switchNumbers1(numbers1)
+  switchNumbers1(numbers2)
+  switchNumbers1(tupple)
+
+  def functionTimes():Unit={
+    //var times:Array[Array[String]]=
+    var times: Iterator[Array[Array[String]]] =java.util.TimeZone.getAvailableIDs().map(a=>a.split('/')).filter(_.size>0).map(b=>b).grouped(10)
+
+   // times.foreach(println)
+  }
+  functionTimes()
+
+
 }
