@@ -22,67 +22,44 @@ def returnAnything(somevar: Any): Any = {
 }
 
 def returnSubstring(word: String, size: Int): String = {
-  word.map(letter => if (word.indexOf(letter) >= word.size - size) letter).filter(item => word.indexOf(item) >= word.size - size).mkString
+  word.map(letter =>letter).filter(item => word.indexOf(item) >= word.size - size).mkString
 }
 println(returnSubstring("Hello", 3))
 
 def returnString2(word1: String, word2: String, c1: Char, c2: Char): String = {
-  var result = word1.concat(word2)
-
-  result = result.replace(c1, c2)
-  result
-
+  word1.concat(word2).replace(c1,c2)
 }
-
 println("Result of string replace1: " + returnString2("Ha", "llo", 'a', 'e'))
 
-def returnSum(num1: Int, num2: Int): Int = {
-  return num1 + num2
-}
-
+def returnSum(num1: Int, num2: Int): Int = {num1 + num2}
 println("Sum of 7+8=: " + returnSum(7, 8))
 
 def returnSumCondition(num1: Int, num2: Int, isTrue: Boolean): Int = {
-  if (isTrue)
-    num1 + num2;
-  else
-    num1 * num2
+  if (isTrue) num1 + num2 else num1 * num2
 }
-
 println("Result conditional one: " + returnSumCondition(7, 8, false))
 
-def returnCondition2(num1: Int, num2: Int): Int = {
-  if (num1 == 0 && num2 == 0)
-    num1
-  else if (num1 == 0)
-    num2
-  else
-    num1
+def returnCondition2(num1: Int, num2: Int)=(num1,num2) match {
+  case(0,0)=>num1
+  case (0,b)=>num1
+  case _=>num2
 }
-
 println("Second conditional: " + returnCondition2(4, 6))
 
 def printOutStrings(word: String, times: Int): Unit = {
-  for (i <- 1 to times)
-    println(word)
-
+  for (i <- 1 to times)println(word)
 }
-
 printOutStrings("Hi", 3)
 
 def printOutStringSquared(word: String, times: Int): Unit = {
   var result = ""
-  for (i <- 1 to times)
-    result += word + " "
-
-  for (j <- 1 to times)
-    println(result)
+  for (i <- 1 to times)result += word + " "
+  for (j <- 1 to times) println(result)
 }
-
 printOutStringSquared("H", 4)
 
 def fizzBuzz(word1: String, word2: String, size: Int): Unit = {
-  for (i <- 1 to size)
+  /*for (i <- 1 to size)
     if (i % 3 == 0 && i % 5 == 0)
       print(word1 + word2 + ",")
     else {
@@ -92,7 +69,10 @@ def fizzBuzz(word1: String, word2: String, size: Int): Unit = {
         print(word2 + ",")
       else
         print(i + ",")
-    }
+    }*/
+  val list:Array[String]=new Array(size)
+  list.map(item=>list.indexOf(item)).foreach(item=>println(item))
+
 }
 
 fizzBuzz("Fizz", "Buzz", 15)
