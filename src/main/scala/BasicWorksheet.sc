@@ -1,5 +1,4 @@
-object BasicWorksheet {
-  //Basic exercises
+//Basic exercises
   println("Hello World")
 
   var output = "Hello World"
@@ -188,4 +187,3 @@ object BasicWorksheet {
   functionTimes()
 
 
-}

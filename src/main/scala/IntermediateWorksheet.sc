@@ -1,5 +1,4 @@
-object IntermediateWorksheet {
-  //BlackJack
+//BlackJack
   def returnBlackJack(first: Int, second: Int): Int = (first, second) match {
     case values if (values._1 > 21 && values._2 > 21) => 0
     case values if (values._1 <= 21 && values._1 >= values._2 || values._1 <= 21 && values._2 > 21) => values._1
@@ -29,4 +28,4 @@ object IntermediateWorksheet {
   println("Input(true,100) "+returnIsTooHot(true,100))
   println("Input(false,100) "+returnIsTooHot(false,100))
 
-}
+
