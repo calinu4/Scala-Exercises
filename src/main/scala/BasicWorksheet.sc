@@ -22,16 +22,18 @@ def returnAnything(somevar: Any): Any = {
 }
 
 def returnSubstring(word: String, size: Int): String = {
-  word.map(letter =>letter).filter(item => word.indexOf(item) >= word.size - size).mkString
+  word.map(letter => letter).filter(item => word.indexOf(item) >= word.size - size).mkString
 }
 println(returnSubstring("Hello", 3))
 
 def returnString2(word1: String, word2: String, c1: Char, c2: Char): String = {
-  word1.concat(word2).replace(c1,c2)
+  word1.concat(word2).replace(c1, c2)
 }
 println("Result of string replace1: " + returnString2("Ha", "llo", 'a', 'e'))
 
-def returnSum(num1: Int, num2: Int): Int = {num1 + num2}
+def returnSum(num1: Int, num2: Int): Int = {
+  num1 + num2
+}
 println("Sum of 7+8=: " + returnSum(7, 8))
 
 def returnSumCondition(num1: Int, num2: Int, isTrue: Boolean): Int = {
@@ -39,27 +41,27 @@ def returnSumCondition(num1: Int, num2: Int, isTrue: Boolean): Int = {
 }
 println("Result conditional one: " + returnSumCondition(7, 8, false))
 
-def returnCondition2(num1: Int, num2: Int)=(num1,num2) match {
-  case(0,0)=>num1
-  case (0,b)=>num1
-  case _=>num2
+def returnCondition2(num1: Int, num2: Int) = (num1, num2) match {
+  case (0, 0) => num1
+  case (0, b) => num1
+  case _ => num2
 }
 println("Second conditional: " + returnCondition2(4, 6))
 
 def printOutStrings(word: String, times: Int): Unit = {
-  for (i <- 1 to times)println(word)
+  for (i <- 1 to times) println(word)
 }
 printOutStrings("Hi", 3)
 
 def printOutStringSquared(word: String, times: Int): Unit = {
   var result = ""
-  for (i <- 1 to times)result += word + " "
+  for (i <- 1 to times) result += word + " "
   for (j <- 1 to times) println(result)
 }
 printOutStringSquared("H", 4)
 
 def fizzBuzz(word1: String, word2: String, size: Int): Unit = {
-  /*for (i <- 1 to size)
+  for (i <- 1 to size)
     if (i % 3 == 0 && i % 5 == 0)
       print(word1 + word2 + ",")
     else {
@@ -69,12 +71,8 @@ def fizzBuzz(word1: String, word2: String, size: Int): Unit = {
         print(word2 + ",")
       else
         print(i + ",")
-    }*/
-  val list:Array[String]=new Array(size)
-  list.map(item=>list.indexOf(item)).foreach(item=>println(item))
-
+    }
 }
-
 fizzBuzz("Fizz", "Buzz", 15)
 
 //rewritte iterations using recursion here
@@ -83,7 +81,6 @@ def printOutStringsRecursion(word: String, times: Int): Unit = {
   if (times > 1)
     printOutStrings(word, times - 1)
 }
-
 printOutStringsRecursion("Hi", 5)
 
 def printOutStringSquaredRecursion(word: String, times: Int, iteration: Int, counter: Int): Unit = {
@@ -95,7 +92,6 @@ def printOutStringSquaredRecursion(word: String, times: Int, iteration: Int, cou
   else if (iteration >= 1)
     printOutStringSquaredRecursion(word, times, iteration, counter + 1)
 }
-
 printOutStringSquaredRecursion("H", 4, 4, 1)
 
 def fizzBuzzRecursion(word1: String, word2: String, size: Int, currentPos: Int): Unit = {
@@ -113,7 +109,6 @@ def fizzBuzzRecursion(word1: String, word2: String, size: Int, currentPos: Int):
     fizzBuzzRecursion(word1, word2, size - 1, currentPos + 1)
   }
 }
-
 fizzBuzzRecursion("fizz", "buzz", 15, 1)
 
 //Pattern matching 1 exercises
@@ -146,11 +141,8 @@ switchNumbers1(numbers1)
 switchNumbers1(numbers2)
 switchNumbers1(tupple)
 
-def functionTimes(): Unit = {
-  //var times:Array[Array[String]]=
-  var times: Array[String] = java.util.TimeZone.getAvailableIDs().map(a => a.split('/')).filter(_.length > 1).map(b => b(1)).grouped(50).map(c => c(0)).toArray
-
-  times.foreach(println)
+def functionTimes() = {
+  java.util.TimeZone.getAvailableIDs().map(a => a.split('/')).filter(_.length > 1).map(b => b(1)).grouped(50).map(c => c(0)).toArray.foreach(item => println(item))
 }
 functionTimes()
 
