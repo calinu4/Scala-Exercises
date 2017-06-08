@@ -5,22 +5,9 @@ def calculator(a: Int, b: Int, c: Int) = {
   var elem1 = 0 var elem2 = 0 var elem3 = 0
   for (i <- 0 to list.length - 1) {
     i match {
-      case 0 => {
-        elem1 = list(i)
-        elem2 = list(i + 1)
-        elem3 = list(i + 2)
-      }
-      case 1 => {
-        elem1 = list(i)
-        elem2 = list(i - 1)
-        elem3 = list(i + 1)
-      }
-      case 2 => {
-        elem1 = list(i)
-        elem2 = list(i - 1)
-        elem3 = list(i - 2)
-      }
-      case _ => "no solution"
+      case 0 => {(elem1 = list(i),elem2 = list(i + 1),elem3 = list(i + 2))}
+      case 1 => {(elem1 = list(i),elem2 = list(i - 1),elem3 = list(i + 1))}
+      case 2 => {(elem1 = list(i),elem2 = list(i - 1),elem3 = list(i - 2))}
     }
     //do operations on two elements here
     if(elem1==add(elem2,elem3)) results+=elem2+"+"+elem3+"="+elem1
