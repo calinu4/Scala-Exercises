@@ -24,7 +24,7 @@
     case tuple if((tuple._1&&tuple._2<60||tuple._2>100)||(tuple._1)!=true&&tuple._2<60||tuple._2>90)=>false
   }
 
-  println("Input(false,80) "+returnIsTooHot(false,80))
+  println("Input(false,80) "+returnIsTooHot(false,85))
   println("Input(true,100) "+returnIsTooHot(true,100))
   println("Input(false,100) "+returnIsTooHot(false,100))
 
