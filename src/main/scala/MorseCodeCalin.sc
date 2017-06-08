@@ -1,5 +1,6 @@
 val morseMessage:String=".... . .-.. .-.. --- / -.. .- .. .-.. -.-- / .--. .-. --- --. .-. .- -- -- . .-. / --. --- --- -.. / .-.. ..- -.-. -.- / --- -. / - .... . / -.-. .... .- .-.. .-.. . -. --. . ... / - --- -.. .- -.--"
 val humanMesage:String="HELLO DAILY PROGRAMMER GOOD LUCK ON THE CHALLENGES TODAY"
+val map1=Map(".-"->'A',"-..."->'B',"-.-."->'C',"-.."->'D',"."->'E',"..-."->'F',"--."->'G',"...."->'H',".."->'I',".---"->'J',"-.-"->'K',".-.."->'L')
 def returnDecryptedWord(word:String)=word match{
   case ".-"=>"A"
   case "-..."=>"B"
