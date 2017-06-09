@@ -5,7 +5,7 @@
     case values if (values._2 <= 21 && values._2 >= values._1 || values._2 <= 21 && values._1 > 21) => values._2
     case _ => 0
   }
-  println("Result of BlackJack: " + returnBlackJack(20, 15))
+  println("Result of BlackJack: " + returnBlackJack(22, 15))
 def returnUniqueSum(first: Int, second: Int, third: Int): Int = (first, second, third) match {
     case nums if (nums._1 != nums._2 && nums._1 != nums._3 && nums._2 != nums._3) => nums._1 + nums._2 + nums._3
     case n if (n._1 == n._2 && n._2 != n._3) => n._3
