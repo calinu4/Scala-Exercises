@@ -7,6 +7,6 @@ abstract class Person {
   def id:Int
   def name:String
   def age:Int
-
+  def phone:String
 
 }
