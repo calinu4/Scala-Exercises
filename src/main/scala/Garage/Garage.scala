@@ -8,12 +8,15 @@ import scala.collection.mutable.ListBuffer
 object Garage {
   var vehicles: ListBuffer[Vehicle]=new ListBuffer[Vehicle]
   var employees:ListBuffer[Person]=new ListBuffer[Person]
+  var allparts:ListBuffer[Part]=new ListBuffer[Part]
 
   def main(args: Array[String]): Unit = {
-    addVehicle(new Car(1,"Audi A6",4,"YG10BET"))
-    addVehicle(new Bike(2,"Yamaha Ninja",2,"YG17REP"))
-    removeVehicleByType("Car")
+    instantiateParts()
+   addVehicle(new Car(1,"Audi A6",4,"YG10BET",allparts))
+    addVehicle(new Bike(2,"Yamaha Ninja",2,"YG17REP",allparts))
+   // removeVehicleByType("Car")
     outputVehicles()
+    displayParts()
 
   }
 
@@ -26,6 +29,15 @@ object Garage {
   def registerEmployee(employee: Employee)=employees+=employee
   def removeEmplopyee(employee: Employee)=employees.remove(employees.indexOf(employee))
 
+  //
+  def instantiateParts()={
+    for(i<-0 to 15) allparts.insert(i,new Part(i,"Part "+i,i+10,i+1))
+  }
+  def displayParts()=allparts.foreach(part=>println(part))
+
+  def getRandomPartsList()={
+
+  }
 
 
 
