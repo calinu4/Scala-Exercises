@@ -9,4 +9,6 @@ abstract class Person {
   def age:Int
   def phone:String
 
+  override def toString: String = "Id: "+id+", Name: "+name+", Age: "+age+", Phone: "+phone
+
 }

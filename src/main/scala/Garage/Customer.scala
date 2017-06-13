@@ -9,5 +9,7 @@ class Customer(id1:Int,name1:String,age1:Int,phoneNo:String) extends Person {
   def age:Int=age1
   def phone:String=phoneNo
 
+  override def toString: String = "Customer=> "+super.toString
+
 
 }

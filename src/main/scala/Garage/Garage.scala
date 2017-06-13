@@ -17,25 +17,19 @@ object Garage {
 
   }
 
-  def addVehicle(vehicle:Vehicle)={
-    vehicles+=vehicle
-  }
+  //Add, Remove By Id and Remove By Type
+  def addVehicle(vehicle:Vehicle)=vehicles+=vehicle
+  def removeVehicleById(id:Int)=vehicles.map(veh=>if(veh.id==id)vehicles.remove(vehicles.indexOf(veh)))
+  def removeVehicleByType(typeOfVehicle:String)=vehicles.map(v=>if (v.getClass.getTypeName=="Garage."+typeOfVehicle) vehicles.remove(vehicles.indexOf(v)))
 
-  def removeVehicleById(id:Int)={
-    vehicles.map(veh=>if(veh.id==id)vehicles.remove(vehicles.indexOf(veh)))
-  }
-
-
-
-  def removeVehicleByType(typeOfVehicle:String)= {
-
-      vehicles.map(v=>if (v.getClass.getTypeName=="Garage."+typeOfVehicle) vehicles.remove(vehicles.indexOf(v)))
+  //Register Employee and Remove Employee from Garage
+  def registerEmployee(employee: Employee)=employees+=employee
+  def removeEmplopyee(employee: Employee)=employees.remove(employees.indexOf(employee))
 
 
-  }
 
-  def outputVehicles()={
-    vehicles.foreach(item=>println(item))
-  }
+
+  def outputVehicles()= vehicles.foreach(item=>println(item))
+  def outputEmployees()=employees.foreach(emp=>println(emp))
 
 }
