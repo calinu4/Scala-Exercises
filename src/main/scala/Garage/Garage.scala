@@ -1,7 +1,7 @@
 package Garage
 
+import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
-import scala.util.Random
 
 /**
   * Created by Profile on 12/06/2017.
@@ -9,13 +9,14 @@ import scala.util.Random
 object Garage {
   var vehicles: ListBuffer[Vehicle] = new ListBuffer[Vehicle]
   var employees: ListBuffer[Person] = new ListBuffer[Person]
+  var customers:ListBuffer[Customer]=new ListBuffer[Customer]
   var allparts: ListBuffer[Part] = new ListBuffer[Part]
+  var customerVehiclesMap:mutable.Map[Vehicle, Customer]=scala.collection.mutable.Map[Vehicle,Customer]()
   var computerGuess = scala.util.Random
 
   def main(args: Array[String]): Unit = {
-    instantiateEmployees()
-    instantiateParts()
-    instantiateCars()
+    openGarage()
+    outputVehiclesWithCustomers()
 
 
   }
@@ -32,19 +33,21 @@ object Garage {
 
   def removeEmplopyee(employee: Employee) = employees.remove(employees.indexOf(employee))
 
-  //
+  //Register Customers and map them to the vehicles
+  def registerCustomer(cust: Customer) = customers += cust
+  def removeCustomer(cust: Customer) = customers.remove(customers.indexOf(cust))
+
+  //Instantiate a sample list of parts
   def instantiateParts() = {
     for (i <- 0 to 15) allparts.insert(i, new Part(i, "Part " + i, i + 10, i + 1))
   }
 
-  def displayParts() = allparts.foreach(part => println(part))
-
+  //Return a random list of parts for each vehicles
   def getRandomPartsList() = {
-    val x = computerGuess.nextInt(15 - 5) + 5
+    val x = computerGuess.nextInt(15 - 10) + 10
     val newlist = allparts.takeWhile(p => allparts.indexOf(p) < x)
     newlist.map(part => if (part.id % 2 == 0) part.isBroken = true)
     newlist
-
   }
 
   def instantiateCars(): Unit = {
@@ -70,10 +73,20 @@ object Garage {
     registerEmployee(new Employee(6,"George Troffin",29,"0744383488343",true))
   }
   def instantiateCustomers()={
-
+    registerCustomer(new Customer(0,"Louie Adam",33,"077434747642"))
+    registerCustomer(new Customer(1,"Rya Thom",21,"077435657642"))
+    registerCustomer(new Customer(2,"Bea Elize",36,"0774354547642"))
+    registerCustomer(new Customer(3,"Clark Denis",38,"0774747642"))
+    registerCustomer(new Customer(4,"Dan Brian",43,"077434747642"))
+    val list=customers.toList
+    vehicles.foreach(v=>customerVehiclesMap.put(v,list(computerGuess.nextInt(5))))
   }
   //Open Garage
   def openGarage () = {
+    instantiateEmployees()
+    instantiateParts()
+    instantiateCars()
+    instantiateCustomers()
 
   }
 
@@ -82,4 +95,7 @@ object Garage {
 
   def outputEmployees() = employees.foreach(emp => println(emp))
 
+  def outputVehiclesWithCustomers()={
+    customerVehiclesMap.foreach(f=>println(f._1+" "+f._2))
+  }
 }
