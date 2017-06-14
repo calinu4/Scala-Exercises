@@ -8,7 +8,7 @@ class Employee(id1:Int,name1:String,age1:Int,phoneNumber:String,isAv:Boolean) ex
   def name:String=name1
   def age:Int=age1
   def phone:String=phoneNumber
-  def isAvailable:Boolean=isAv
+  var isAvailable:Boolean=isAv
 
   override def toString: String = "Employee=> "+super.toString+", IsAvailable="+isAvailable
 
