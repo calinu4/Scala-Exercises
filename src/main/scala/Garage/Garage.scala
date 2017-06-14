@@ -27,6 +27,7 @@ object Garage {
     //outputVehiclesWithCustomers()
     println("Total time to fix the vehicles is: "+totalDays+" Day")
     println("Total money to repair first car "+calculateBill(vehicles(0)))
+    closeGarage()
 
 
   }
@@ -107,13 +108,14 @@ object Garage {
   }
 
   def closeGarage()={
-
+calculateTotalProfitForOneDay()
   }
 
   //Fix Vehicle
   def fixVehicle(veh: Vehicle) = {
     var isDone:Boolean=false
      employees.foreach(emp=>if(emp.isAvailable && !isDone){fixMap.put(veh,emp);emp.isAvailable=false;isDone=true})
+
 
   }
 
@@ -152,6 +154,9 @@ object Garage {
   }
 
   def calculateTotalProfitForOneDay()={
+    var totalBill=0
+    fixMap.foreach(veh=>totalBill+=calculateBill(veh._1))
+    println("Total Profit for one day: "+totalBill)
 
   }
   def outputVehicles() = vehicles.foreach(item => println(item))
