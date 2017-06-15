@@ -26,7 +26,7 @@ object Garage {
 
     //outputVehiclesWithCustomers()
     println("Total time to fix the vehicles is: "+totalDays+" Day")
-    println("Total money to repair first car "+calculateBill(vehicles(0)))
+
     closeGarage()
 
 
@@ -104,7 +104,7 @@ object Garage {
     totalDays=convertHoursToDays(totalHours)
     vehicles.foreach(veh=>fixVehicle(veh))
     //show the vehicles which are attended by employees
-    fixMap.foreach(veh=>println(veh._1.model+"   ->    "+veh._2.name+"     Time to fix: "+returnTotalHoursPerVehicleToFix(veh._1)+"   Total cost to fix: £"+calculateBill(veh._1)))
+    fixMap.foreach(veh=>println(veh._1.model+", Reg: "+veh._1.registration+"   ->Fixed By    "+veh._2.name+"     Time to fix: "+returnTotalHoursPerVehicleToFix(veh._1)+"   Total cost to fix: £"+calculateBill(veh._1)))
   }
 
   def closeGarage()={
