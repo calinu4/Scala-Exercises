@@ -1,5 +1,7 @@
 package Garage
 
+import java.util.Calendar
+
 import scala.collection.mutable._
 
 
@@ -15,6 +17,9 @@ object Garage {
   var computerGuess = scala.util.Random
   var fixMap:Map[Vehicle,Employee]=scala.collection.mutable.Map[Vehicle,Employee]()
 
+  var now = Calendar.getInstance()
+  var currentMinute = now.get(Calendar.SECOND)
+
   val hourlyRate = 30
   var maxHoursPerDay = 0
   var totalHours=0
@@ -22,6 +27,7 @@ object Garage {
   def main(args: Array[String]): Unit = {
     instantiateEmployees()
     instantiateParts()
+    println("Opening Garage ->Preparing to fix vehicles....")
     openGarage()
 
     //outputVehiclesWithCustomers()
@@ -111,11 +117,13 @@ object Garage {
 calculateTotalProfitForOneDay()
   }
 
-  //Fix Vehicle
-  def fixVehicle(veh: Vehicle) = {
+  //Fix Vehicle only when an employee is available , make an employee available if the total hours to repair an vehicles is less than the difference of current time - initial time of starting the fixing of a vehicle
+  def fixVehicle(veh: Vehicle):Unit = {
     var isDone:Boolean=false
-     employees.foreach(emp=>if(emp.isAvailable && !isDone){fixMap.put(veh,emp);emp.isAvailable=false;isDone=true})
 
+     employees.foreach(emp=>if(emp.isAvailable && !isDone){fixMap.put(veh,emp);emp.isAvailable=false;isDone=true})
+    fixMap.foreach(v=>if(returnTotalHoursPerVehicleToFix(v._1)<=(Calendar.getInstance().get(Calendar.SECOND)-currentMinute)) v._2.isAvailable=true)
+    if(!isDone)fixVehicle(veh)
 
   }
 
@@ -156,7 +164,7 @@ calculateTotalProfitForOneDay()
   def calculateTotalProfitForOneDay()={
     var totalBill=0
     fixMap.foreach(veh=>totalBill+=calculateBill(veh._1))
-    println("Total Profit for one day: "+totalBill)
+    println("Total Profit for one day: £ "+totalBill)
 
   }
   def outputVehicles() = vehicles.foreach(item => println(item))

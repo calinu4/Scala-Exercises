@@ -33,6 +33,6 @@ def generatePrimes(maxNum: Int): Unit = {
 
 println("Counting between 1 and 3 millions....")
 generatePrimes(3000000)
-//println("Counting between 1 and 2 billions....")
-//generatePrimes(200000000)
+//println("Counting between 1 and 200 millions....")
+generatePrimes(200000000)
 
