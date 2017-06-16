@@ -122,8 +122,10 @@ calculateTotalProfitForOneDay()
     var isDone:Boolean=false
 
      employees.foreach(emp=>if(emp.isAvailable && !isDone){fixMap.put(veh,emp);emp.isAvailable=false;isDone=true})
-    fixMap.foreach(v=>if(returnTotalHoursPerVehicleToFix(v._1)<=(Calendar.getInstance().get(Calendar.SECOND)-currentMinute)) v._2.isAvailable=true)
-    if(!isDone)fixVehicle(veh)
+
+    if(!isDone){
+      fixMap.foreach(v=>if(returnTotalHoursPerVehicleToFix(v._1)<=(Calendar.getInstance().get(Calendar.SECOND)-currentMinute)) v._2.isAvailable=true)
+      fixVehicle(veh)}
 
   }
 
